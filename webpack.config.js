@@ -7,7 +7,6 @@ var devFlagPlugin = new webpack.DefinePlugin({
 });
 
 module.exports = {
-  devtool: 'eval',
   entry: [
     'webpack-dev-server/client?http://localhost:3000',
     'webpack/hot/only-dev-server',
@@ -19,6 +18,7 @@ module.exports = {
     publicPath: '/static/'
   },
   plugins: [
+    new webpack.NamedModulesPlugin(),
     new webpack.HotModuleReplacementPlugin(),
     new webpack.NoEmitOnErrorsPlugin(),
     devFlagPlugin
@@ -29,7 +29,7 @@ module.exports = {
         test: /\.jsx?$/,
         loaders: 'babel-loader',
         include: path.join(__dirname, 'src'),
-        exclude: "/node_modules/",
+        exclude: /(node_modules|bower_components)/,
         query: {
           presets:['react','es2015']
         }

@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import ReactDOM from 'react-dom';
 import { combineReducers } from 'redux';
 import { Provider } from 'react-redux';
 
@@ -8,20 +9,10 @@ import * as reducers from '../reducers';
 const reducer = combineReducers(reducers);
 const store = createStore(reducer);
 
-class App extends Component {
+export default class App extends Component {
   render() { 
-    return 
-      <main>
-        <h1>Hello World</h1>
-      </main>
+    return
+    <h1>Hello, world!</h1>,
+    document.getElementById('root')
   }
 }
-    
-function mapStateToProps (state) {
-  return {
-    note: state,
-    page: state
-  }
-}
-
-export default connect(mapStateToProps)(App);

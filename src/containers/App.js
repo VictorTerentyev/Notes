@@ -1,18 +1,18 @@
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
-import { combineReducers } from 'redux';
 import { Provider } from 'react-redux';
 
 import { createStore, renderDevTools } from '../tools/devTools';
-import * as reducers from '../reducers';
+import reducer from '../reducers/index';
 
-const reducer = combineReducers(reducers);
+import NotesApp from '../containers/NotesApp';
+
 const store = createStore(reducer);
 
 export default class App extends Component {
-  render() { 
-    return
-    <h1>Hello, world!</h1>,
-    document.getElementById('root')
+  render() {
+    return (
+      <NotesApp />
+    );
   }
 }

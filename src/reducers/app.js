@@ -9,6 +9,6 @@ const initialState = {
   refreshDate: currentDate
 }
 
-export default function addNote (state = initialState) {
+export default function addNote (state = initialState, action) {
   return state;
 }

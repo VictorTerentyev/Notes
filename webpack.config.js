@@ -7,6 +7,7 @@ var devFlagPlugin = new webpack.DefinePlugin({
 });
 
 module.exports = {
+  mode: 'production',
   entry: [
     'webpack-dev-server/client?http://localhost:3000',
     'webpack/hot/only-dev-server',
@@ -25,6 +26,7 @@ module.exports = {
   ],
   module: {
     rules: [
+      { test: /\.css$/, use: 'css-loader' },
       {
         test: /\.jsx?$/,
         loaders: 'babel-loader',

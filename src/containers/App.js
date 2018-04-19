@@ -5,14 +5,22 @@ import { Provider } from 'react-redux';
 import { createStore, renderDevTools } from '../tools/devTools';
 import reducer from '../reducers/index';
 
-import NotesApp from '../containers/NotesApp';
+import NotesApp from './NotesApp';
 
 const store = createStore(reducer);
 
 export default class App extends Component {
+
   render() {
     return (
-      <NotesApp />
+      <div class="main">
+        <Provider store={store}>
+          {() => <NotesApp /> }
+        </Provider>
+
+        {renderDevTools(store)}
+      </div>
     );
   }
+  
 }

@@ -1,4 +1,4 @@
-import React, { Component, PropTypes } from 'react';;
+import React, { Component, PropTypes } from 'react';
 
 import styles from './Notes.css';
 
@@ -12,8 +12,4 @@ export default class Notes extends Component {
     );
   }
 
-}
-
-Notes.propTypes = {
-  
 }

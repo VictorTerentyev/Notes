@@ -5,23 +5,26 @@ import styles from './AddNoteInput.css';
 export default class AddNoteInput extends Component {
   render () {
     return (
-      <input
-        type="text"
-        className={classnames('input-form-control', styles.addNoteInput)}
-        placeholder="Type the name of a note"
-        value={this.state.name}
-        onChange={this.inputHandleChange.bind(this)}
-        onKeyDown={this.inputHandleSubmit.bind(this)} 
-      />
-      <textarea
-        type="text"
-        className={classnames('textarea-form-control', styles.addNoteTextArea)}
-        placeholder="Type content of a note"
-        onChange={this.textAreahandleChange.bind(this)}
-        onKeyDown={this.textAreahandleSubmit.bind(this)}
-      >
-        {this.state.content}
-      </textarea>
+      <div className={styles.formControl}>
+        <input 
+          type="text"
+          className={classnames('input-form-control', styles.addNoteInput)}
+          placeholder="Type the name of a note"
+          value={this.state.name}
+          onChange={this.inputHandleChange.bind(this)}
+          onKeyDown={this.inputHandleSubmit.bind(this)} 
+        />
+        <textarea
+          type="text"
+          className={classnames('textarea-form-control', styles.addNoteTextArea)}
+          placeholder="Type content of a note"
+          onChange={this.textAreahandleChange.bind(this)}
+          onKeyDown={this.textAreahandleSubmit.bind(this)}
+          value={this.state.content}
+        >
+          {this.state.content}
+        </textarea>
+      </div>
     );
   }
 

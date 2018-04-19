@@ -3,8 +3,6 @@ import React, { Component, PropTypes } from 'react';
 import styles from './Notes.css';
 
 export default class Notes extends Component {
-  let myMap = new Map();
-
   render () {
     return (
       <ul className={styles.notes}>

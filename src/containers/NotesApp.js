@@ -2,7 +2,7 @@ import React, { Component, PropTypes } from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 
-import { Notes, AddNoteInput } as AppActions from '../components';
+import { Notes, AddNoteInput as AppActions } from '../components';
 
 import styles from './NotesApp.css';
 

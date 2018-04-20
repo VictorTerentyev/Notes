@@ -8,6 +8,12 @@ import NotesApp from './NotesApp';
 
 const store = createStore(reducer);
 
+store.dispatch({
+  type: 'ADD_TODO',
+  text: 'Use Redux'
+})
+console.log(store.getState())
+
 export default class App extends Component {
 
   render() {

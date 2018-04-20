@@ -2,6 +2,8 @@ import React, { Component, PropTypes } from 'react';
 
 import styles from './Notes.css';
 
+import NotesItem from './NotesItem';
+
 export default class Notes extends Component {
   render () {
     return (

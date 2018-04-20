@@ -2,12 +2,15 @@ var path = require('path');
 var webpack = require('webpack');
 var ExtractTextPlugin = require('extract-text-webpack-plugin');
 
+const isDebug = !process.argv.includes('--release');
+
 var devFlagPlugin = new webpack.DefinePlugin({
   __DEV__: JSON.stringify(JSON.parse(process.env.DEBUG || 'false'))
 });
 
 module.exports = {
   mode: 'development',
+  devtool: 'eval',
   entry: [
     'webpack-dev-server/client?http://localhost:3000',
     'webpack/hot/only-dev-server',
@@ -28,12 +31,15 @@ module.exports = {
     rules: [
       { test: /\.css$/, use: 'css-loader' },
       {
-        test: /\.jsx?$/,
+        test: /\.js|jsx?$/,
         loaders: 'babel-loader',
         include: path.join(__dirname, 'src'),
         exclude: /(node_modules|bower_components)/,
         query: {
-          presets:['react','es2015']
+          presets: ['react','es2015','stage-2'],
+          plugins: [
+            ...isDebug ? ['transform-decorators-legacy'] : [],
+          ]
         }
       },
     ]

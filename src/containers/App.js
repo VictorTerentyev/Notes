@@ -1,31 +1,25 @@
 import React, { Component } from 'react';
+import { combineReducers } from 'redux';
 import { Provider } from 'react-redux';
-
-import { createStore, renderDevTools } from '../tools/devTools';
-import reducer from '../reducers/index';
 
 import NotesApp from './NotesApp';
 
+import { createStore, renderDevTools } from '../tools/devTools';
+import * as reducers from '../reducers';
+
+const reducer = combineReducers(reducers);
 const store = createStore(reducer);
 
-store.dispatch({
-  type: 'ADD_TODO',
-  text: 'Use Redux'
-})
-console.log(store.getState())
-
 export default class App extends Component {
-
   render() {
     return (
-      <div class="main">
+      <div className="main">
         <Provider store={store}>
-          {() => <NotesApp /> }
+          <NotesApp />
         </Provider>
 
         {renderDevTools(store)}
       </div>
     );
   }
-  
 }

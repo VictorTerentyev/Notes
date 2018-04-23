@@ -1,9 +1,9 @@
-import { EDIT_NOTE, REMOVE_NOTE as types } from '../constants/ActionTypes';
+import * as types from '../constants/ActionTypes';
 
 const date = new Date().toLocaleString().slice(0,10);
 
 const initialState = {
-  id: 'default',
+  id: 0,
   name: 'default',
   content: 'default',
   date: date,
@@ -37,6 +37,22 @@ export default function notes(state = initialState, action) {
         ...state,
         notes: state.notes.filter(id => id !== action.id),
         notesById: state.notesById = delete state.notesById[action.id]
+      })
+
+    case types.ADD_NOTE:
+      const newId = state.notes[state.notes.length-1] + 1;
+      return ({
+        ...state,
+        notes: state.notes.concat(newId),
+        notesById: {
+          ...state.notesById,
+          [newId]: {
+            id: newId,
+            name: action.name,
+            content: action.content,
+            date: action.date
+          }
+        },
       })
 
     default:

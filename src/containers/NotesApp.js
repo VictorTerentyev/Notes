@@ -1,8 +1,11 @@
-import React, { Component, PropTypes } from 'react';
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 
-import { Notes, AddNoteInput as AppActions } from '../components';
+import * as AppActions from '../actions/NotesActions';
+
+import { Notes, AddNoteInput } from '../components';
 
 import styles from './NotesApp.css';
 
@@ -26,6 +29,6 @@ export default class NotesApp extends Component {
 }
 
 NotesApp.propTypes = {
-  notesById: PropTypes.object.isRequired,
-  dispatch: PropTypes.func.isRequired
+  notesById: PropTypes.object,
+  dispatch: PropTypes.func
 }

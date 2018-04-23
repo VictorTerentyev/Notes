@@ -1,6 +1,6 @@
-import React, { Component, PropTypes } from 'react';
-import classnames from 'classnames';
-import style from './NotesItem.css';
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
+import styles from './NotesItem.css';
 
 export default class NotesItem extends Component {
   render () {
@@ -11,7 +11,7 @@ export default class NotesItem extends Component {
           <div><textarea onchange={() => this.props.editeNote(this.props.name, this.props.content)}>{this.props.content}</textarea></div>
           <div><span>{this.props.date}</span></div>
         </div>
-        <div className={style.noteAction}>
+        <div className={styles.noteAction}>
           <button className={`btn btn-default ${styles.btnAction}`} onClick={() => this.props.removeNote(this.props.id)}>
             <i className="fa fa-trash" />
           </button>
@@ -22,10 +22,10 @@ export default class NotesItem extends Component {
 }
 
 NotesItem.propTypes = {
-  id: PropTypes.number.isRequired,
-  name: PropTypes.string.isRequired,
-  content: PropTypes.string.isRequired,
-  date: PropTypes.string.isRequired,
-  editNote: PropTypes.func.Required,
-  removeNote: PropTypes.func.Required
+  id: PropTypes.number,
+  name: PropTypes.string,
+  content: PropTypes.string,
+  date: PropTypes.string,
+  editNote: PropTypes.func,
+  removeNote: PropTypes.func
 }

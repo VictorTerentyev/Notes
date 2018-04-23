@@ -1,8 +1,1 @@
-import { combineReducers } from 'redux';
-import app from './app';
-import note from './note';
-
-export default combineReducers({
-  app,
-  note
-})
+export { default as notes } from './notes';

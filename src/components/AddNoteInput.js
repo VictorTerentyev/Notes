@@ -1,4 +1,5 @@
-import React, { Component, PropTypes } from 'react';
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import classnames from 'classnames';
 import styles from './AddNoteInput.css';
 
@@ -18,8 +19,8 @@ export default class AddNoteInput extends Component {
           type="text"
           className={classnames('textarea-form-control', styles.addNoteTextArea)}
           placeholder="Type content of a note"
-          onChange={this.textAreahandleChange.bind(this)}
-          onKeyDown={this.textAreahandleSubmit.bind(this)}
+          onChange={this.textAreaHandleChange.bind(this)}
+          onKeyDown={this.textAreaHandleSubmit.bind(this)}
           value={this.state.content}
         >
           {this.state.content}
@@ -54,7 +55,7 @@ export default class AddNoteInput extends Component {
   }
 
   textAreaHandleSubmit (e) {
-    const name = e.target.value.trim();
+    const content = e.target.value.trim();
     if (e.which === 13) {
       this.props.addNote(name, content);
       this.setState({ content: '' });
@@ -64,5 +65,5 @@ export default class AddNoteInput extends Component {
 }
 
 AddNoteInput.propTypes = {
-  addNote: PropTypes.func.isRequired
+  addNote: PropTypes.func
 }

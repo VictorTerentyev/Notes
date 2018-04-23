@@ -1,4 +1,5 @@
-import React, { Component, PropTypes } from 'react';
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 
 import styles from './Notes.css';
 
@@ -8,7 +9,7 @@ export default class Notes extends Component {
   render () {
     return (
       <ul className={styles.notes}>
-        {this.props.notes.map(e => {
+        {Object.entries(this.props.notes).map(e => {
           return (
             <NotesItem
             key={e.id}
@@ -25,6 +26,6 @@ export default class Notes extends Component {
 }
 
 Notes.propTypes = {
-  notes: PropTypes.object.isRequired,
-  actions: PropTypes.object.isRequired
+  notes: PropTypes.object,
+  actions: PropTypes.object
 }

@@ -7,8 +7,8 @@ export default class NotesItem extends Component {
     return (
       <li className={styles.notesItem}>
         <div className={styles.noteInf}>
-          <div><input type="text" onchange={() => this.props.editeNote(this.props.name, this.props.content)} value={this.props.name}/></div>
-          <div><textarea onchange={() => this.props.editeNote(this.props.name, this.props.content)}>{this.props.content}</textarea></div>
+          <div><input type="text" onChange={() => this.props.editeNote(this.props.name, this.props.content)} value={this.props.name}/></div>
+          <div><textarea onChange={() => this.props.editeNote(this.props.name, this.props.content)}>{this.props.content}</textarea></div>
           <div><span>{this.props.date}</span></div>
         </div>
         <div className={styles.noteAction}>

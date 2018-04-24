@@ -22,9 +22,7 @@ export default class AddNoteInput extends Component {
           onChange={this.textAreaHandleChange.bind(this)}
           onKeyDown={this.textAreaHandleSubmit.bind(this)}
           value={this.state.content}
-        >
-          {this.state.content}
-        </textarea>
+        />
       </div>
     );
   }
@@ -39,26 +37,28 @@ export default class AddNoteInput extends Component {
   }
 
   inputHandleChange (e) {
-    this.setState({ name: e.target.value });
+    this.setState({ name: e.target.value, content: document.querySelector('.textarea-form-control').value });
   }
 
   inputHandleSubmit (e) {
     const name = e.target.value.trim();
+    const content = document.querySelector('.textarea-form-control').value.trim();
     if (e.which === 13) {
-      this.props.addFriend(name);
-      this.setState({ name: '' });
+      this.props.addNote(name, content);
+      this.setState({ name: '', content: '' });
     }
   }
 
   textAreaHandleChange (e) {
-    this.setState({ content: e.target.value });
+    this.setState({ content: e.target.value, name: document.querySelector('.input-form-control').value });
   }
 
   textAreaHandleSubmit (e) {
+    const name = document.querySelector('.input-form-control').value.trim();
     const content = e.target.value.trim();
     if (e.which === 13) {
       this.props.addNote(name, content);
-      this.setState({ content: '' });
+      this.setState({ content: '', name: '' });
     }
   }
 

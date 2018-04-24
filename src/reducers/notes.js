@@ -19,7 +19,6 @@ export default function notes(state = initialState, action) {
       const id = state.notes[state.notes.length-1];
       return ({
         ...state,
-        notes: state.notes.concat(id),
         notesById: {
           ...state.notesById,
           [id]: {
@@ -32,15 +31,27 @@ export default function notes(state = initialState, action) {
       })
 
     case types.REMOVE_NOTE:
-      const array = Array.from(state);
+    
+      function removeFromNotesById(element, id) {
+        delete element[id];
+        for (let key in element) {
+          if (key > id) {
+            element[key].id--;
+            element[key-1] = element[key];
+            delete element[key];
+          }
+        }
+        return element
+      }
+
       return ({
         ...state,
-        notes: state.notes.filter(id => id !== action.id),
-        notesById: state.notesById = delete state.notesById[action.id]
+        notes: state.notes.splice(action.id, 1),
+        notesById: removeFromNotesById(state.notesById, action.id)
       })
 
     case types.ADD_NOTE:
-      const newId = state.notes[state.notes.length-1] + 1;
+      const newId = state.notes.length;
       return ({
         ...state,
         notes: state.notes.concat(newId),
@@ -50,7 +61,7 @@ export default function notes(state = initialState, action) {
             id: newId,
             name: action.name,
             content: action.content,
-            date: action.date
+            date: state.date
           }
         },
       })

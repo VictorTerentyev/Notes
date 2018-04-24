@@ -12,10 +12,10 @@ export default class Notes extends Component {
         {Object.entries(this.props.notes).map(e => {
           return (
             <NotesItem
-            key={e.id}
-            id={e.id}
-            name={e.name}
-            content={e.content}
+            key={e[e.length-1].id}
+            id={e[e.length-1].id}
+            name={e[e.length-1].name}
+            content={e[e.length-1].content}
             {...this.props.actions}
             /> 
           );

@@ -9,7 +9,7 @@ var devFlagPlugin = new webpack.DefinePlugin({
 });
 
 module.exports = {
-  mode: 'development',
+  mode: 'production',
   devtool: 'eval',
   entry: [
     'webpack-dev-server/client?http://localhost:3000',

@@ -9,9 +9,10 @@ export function addNote (name, content) {
   };
 }
 
-export function editNote(name, content) {
+export function editNote(id, name, content) {
   return {
     type: types.EDIT_NOTE,
+    id,
     name,
     content,
     date: new Date().toLocaleString().slice(0,10)

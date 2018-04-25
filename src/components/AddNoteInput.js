@@ -13,17 +13,18 @@ export default class AddNoteInput extends Component {
           placeholder="Type the name of a note"
           value={this.state.name}
           onChange={this.inputHandleChange.bind(this)}
-          onKeyDown={this.inputHandleSubmit.bind(this)} 
         />
         <textarea
           type="text"
           className={classnames('textarea-form-control', styles.addNoteTextArea)}
           placeholder="Type content of a note"
-          onChange={this.textAreaHandleChange.bind(this)}
-          onKeyDown={this.textAreaHandleSubmit.bind(this)}
           value={this.state.content}
+          onChange={this.textAreaHandleChange.bind(this)}
         />
-      </div>
+      <button className={`btn btn-add ${styles.btnAction}`} onClick={() => this.addNote(this.state.name, this.state.content)}>
+        <i className="fa fa-add" />
+      </button>
+    </div>
     );
   }
 
@@ -36,32 +37,22 @@ export default class AddNoteInput extends Component {
     };
   }
 
-  inputHandleChange (e) {
-    this.setState({ name: e.target.value, content: document.querySelector('.textarea-form-control').value });
-  }
-
-  inputHandleSubmit (e) {
-    const name = e.target.value.trim();
-    const content = document.querySelector('.textarea-form-control').value.trim();
-    if (e.which === 13) {
+  addNote(name, content) {
+    if (name === '' || content === '') {
+      return alert('Fill the fields and try again');
+    } else {
       this.props.addNote(name, content);
       this.setState({ name: '', content: '' });
     }
   }
 
+  inputHandleChange (e) {
+    this.setState({ name: e.target.value, content: document.querySelector('.textarea-form-control').value });
+  }
+
   textAreaHandleChange (e) {
     this.setState({ content: e.target.value, name: document.querySelector('.input-form-control').value });
   }
-
-  textAreaHandleSubmit (e) {
-    const name = document.querySelector('.input-form-control').value.trim();
-    const content = e.target.value.trim();
-    if (e.which === 13) {
-      this.props.addNote(name, content);
-      this.setState({ content: '', name: '' });
-    }
-  }
-
 }
 
 AddNoteInput.propTypes = {

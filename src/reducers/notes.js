@@ -1,12 +1,15 @@
 import * as types from '../constants/ActionTypes';
 
-const date = new Date().toLocaleString().slice(0,10);
+function currentDate() {
+  return new Date().toLocaleString().slice(0,10)
+}
+
 
 const initialState = {
   id: 0,
   name: 'default',
   content: 'default',
-  date: date,
+  date: currentDate(),
   notes: [],
   notesById: {}
 }
@@ -16,18 +19,17 @@ export default function notes(state = initialState, action) {
   switch (action.type) {
 
     case types.EDIT_NOTE:
-      const id = state.notes[state.notes.length-1];
       return ({
         ...state,
         notesById: {
           ...state.notesById,
-          [id]: {
-            id: id,
+          [action.id]: {
+            id: action.id,
             name: action.name,
             content: action.content,
-            date: action.date
+            date: state.date
           }
-        }
+        },
       })
 
     case types.REMOVE_NOTE:

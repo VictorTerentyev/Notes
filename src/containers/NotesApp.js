@@ -20,7 +20,8 @@ export default class NotesApp extends Component {
 
     return (
       <div className={styles.notesApp}>
-        <h1>Notes</h1>
+        <h1>Simple Notes</h1>
+        <hr/>
         <AddNoteInput addNote={actions.addNote} />
         <Notes notes={notesById} actions={actions} />
       </div>

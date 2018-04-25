@@ -1,5 +1,26 @@
-.NotesApp {
-  border: 1px red solid;
-  margin: 0 auto; }
+.notesApp {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  font-family: 'Anton', sans-serif; }
+  .notesApp h1 {
+    font-size: 45px;
+    font-weight: 400;
+    text-align: center;
+    margin: 10px 0; }
+  .notesApp hr {
+    width: 100%;
+    border: 2px solid #000000;
+    margin-bottom: 20px; }
+  .notesApp > div {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 300px;
+    margin: 0 auto;
+    align-items: center; }
+    .notesApp > div * {
+      margin: 0 5px 5px 5px;
+      width: 100%; }
 
 /*# sourceMappingURL=NotesApp.css.map */

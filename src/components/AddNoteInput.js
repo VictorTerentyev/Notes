@@ -22,7 +22,7 @@ export default class AddNoteInput extends Component {
           onChange={this.textAreaHandleChange.bind(this)}
         />
       <button className={`btn btn-add ${styles.btnAction}`} onClick={() => this.addNote(this.state.name, this.state.content)}>
-        <i className="fa fa-add" />
+        <i className="fa fa-plus" />Add Note<i className="fa fa-plus" />
       </button>
     </div>
     );

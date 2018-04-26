@@ -47,9 +47,6 @@ export default class NotesItem extends Component {
 
   removeNote(id) {
     this.props.removeNote(id);
-    let elem = document.querySelector('.note-' + id);
-    elem.querySelector('input').value = 20;
-    elem.querySelector('textarea').value = 20;
   }
 
   editNote(id, name, content, date) {

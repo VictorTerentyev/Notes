@@ -29,6 +29,14 @@ export default function notes(state = initialState, action) {
 
     case types.REMOVE_NOTE:
     
+      function removeFromNotes(element, id) {
+        element.splice(id, 1);
+        for (let i = id; i < element.length; i++) {
+          element[i]--;
+        }
+        return element;
+      }
+
       function removeFromNotesById(element, id) {
         delete element[id];
         for (let key in element) {
@@ -43,7 +51,7 @@ export default function notes(state = initialState, action) {
 
       return ({
         ...state,
-        notes: state.notes.splice(action.id, 1),
+        notes: removeFromNotes(state.notes, action.id),
         notesById: removeFromNotesById(state.notesById, action.id)
       })
 

@@ -55,11 +55,11 @@ export default class AddNoteInput extends Component {
   }
 
   inputHandleChange (e) {
-    this.setState({ name: e.target.value, content: document.querySelector('.textarea-form-control').value });
+    this.setState({ name: e.target.value });
   }
 
   textAreaHandleChange (e) {
-    this.setState({ content: e.target.value, name: document.querySelector('.input-form-control').value });
+    this.setState({ content: e.target.value });
   }
 }
 

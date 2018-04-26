@@ -4,10 +4,6 @@ import styles from './NotesItem.css';
 
 export default class NotesItem extends Component {
   render () {
-    this.state.name = this.props.name;
-    this.state.content = this.props.content;
-    this.state.date = this.props.date;
-    
     return (
       <li className={`${styles.notesItem} note-${this.props.id}`}>
         <input 
@@ -24,7 +20,7 @@ export default class NotesItem extends Component {
           <button className={`btn btn-edit ${styles.btnAction}`} onClick={() => this.editNote(this.props.id, this.state.name, this.state.content, this.state.date)}>
             <i className="fa fa-edit"/>
           </button>
-          <button className={`btn btn-remove ${styles.btnAction}`} onClick={() => this.props.removeNote(this.props.id)}>
+          <button className={`btn btn-remove ${styles.btnAction}`} onClick={() => this.removeNote(this.props.id)}>
             <i className={`fa fa-trash ${styles.removeIcon}`}/>
           </button>
         </div>
@@ -47,6 +43,13 @@ export default class NotesItem extends Component {
     let hours = date.getHours() < 10 ? '0' + date.getHours() : date.getHours();
     let minutes = date.getMinutes() < 10 ? '0' + date.getMinutes() : date.getMinutes();
     return date.toLocaleString().slice(0,10) + ' ' + hours + ':' + minutes;
+  }
+
+  removeNote(id) {
+    this.props.removeNote(id);
+    let elem = document.querySelector('.note-' + id);
+    elem.querySelector('input').value = 20;
+    elem.querySelector('textarea').value = 20;
   }
 
   editNote(id, name, content, date) {

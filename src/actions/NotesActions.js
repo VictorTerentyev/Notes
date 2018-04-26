@@ -1,21 +1,21 @@
 import * as types from '../constants/ActionTypes';
 
-export function addNote (name, content) {
+export function addNote (name, content, date) {
   return {
     type: types.ADD_NOTE,
     name,
     content,
-    date: new Date().toLocaleString().slice(0,10)
+    date
   };
 }
 
-export function editNote(id, name, content) {
+export function editNote(id, name, content, date) {
   return {
     type: types.EDIT_NOTE,
     id,
     name,
     content,
-    date: new Date().toLocaleString().slice(0,10)
+    date
   };
 }
 

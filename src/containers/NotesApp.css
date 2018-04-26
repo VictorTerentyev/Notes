@@ -1,26 +1,18 @@
 .notesApp {
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  font-family: 'Anton', sans-serif; }
-  .notesApp h1 {
+  justify-content: center; }
+  .notesApp .appTitle {
     font-size: 45px;
-    font-weight: 400;
     text-align: center;
     margin: 10px 0; }
   .notesApp hr {
-    width: 596px;
+    width: 1196px;
     border: 2px solid #000000;
-    margin-bottom: 20px; }
-  .notesApp > div {
+    border-radius: 2px;
+    margin-bottom: 10px; }
+  .notesApp .appBody {
     display: flex;
-    flex-direction: column;
-    justify-content: center;
-    width: 300px;
-    margin: 0 auto;
-    align-items: center; }
-    .notesApp > div * {
-      margin: 0 5px 5px 5px;
-      width: 100%; }
+    flex-direction: row; }
 
 /*# sourceMappingURL=NotesApp.css.map */

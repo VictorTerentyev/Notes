@@ -1,15 +1,10 @@
 import * as types from '../constants/ActionTypes';
 
-function currentDate() {
-  return new Date().toLocaleString().slice(0,10)
-}
-
-
 const initialState = {
   id: 0,
   name: 'default',
   content: 'default',
-  date: currentDate(),
+  date: 'default',
   notes: [],
   notesById: {}
 }
@@ -27,7 +22,7 @@ export default function notes(state = initialState, action) {
             id: action.id,
             name: action.name,
             content: action.content,
-            date: state.date
+            date: action.date
           }
         },
       })
@@ -63,7 +58,7 @@ export default function notes(state = initialState, action) {
             id: newId,
             name: action.name,
             content: action.content,
-            date: state.date
+            date: action.date
           }
         },
       })

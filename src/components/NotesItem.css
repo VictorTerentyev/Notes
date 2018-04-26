@@ -1,3 +1,27 @@
-
+.notesItem {
+  display: flex;
+  flex-direction: column;
+  padding: 10px;
+  margin: 0 5px; }
+  .notesItem .itemControls {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-top: 10px; }
+    .notesItem .itemControls .itemDate {
+      font-size: 18px; }
+    .notesItem .itemControls .btnAction {
+      transition: linear 0.5s; }
+      .notesItem .itemControls .btnAction i {
+        transition: linear 0.5s;
+        font-size: 20px; }
+      .notesItem .itemControls .btnAction .removeIcon {
+        position: relative;
+        bottom: 2px; }
+    .notesItem .itemControls .btnAction:hover {
+      transition: linear 0.5s; }
+      .notesItem .itemControls .btnAction:hover i {
+        transition: linear 0.5s;
+        color: #ffffff; }
 
 /*# sourceMappingURL=NotesItem.css.map */

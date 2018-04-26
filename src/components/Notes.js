@@ -16,6 +16,7 @@ export default class Notes extends Component {
             id={e[e.length-1].id}
             name={e[e.length-1].name}
             content={e[e.length-1].content}
+            date={e[e.length-1].date}
             {...this.props.actions}
             /> 
           );

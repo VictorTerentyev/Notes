@@ -21,10 +21,12 @@ export default class AddNoteInput extends Component {
           value={this.state.content}
           onChange={this.textAreaHandleChange.bind(this)}
         />
-      <button className={`btn btn-add ${styles.btnAction}`} onClick={() => this.addNote(this.state.name, this.state.content)}>
-        <i className="fa fa-plus" />Add Note<i className="fa fa-plus" />
-      </button>
-    </div>
+        <div className={styles.formControl}>
+          <button className={`btn btn-add ${styles.btnAction}`} onClick={() => this.addNote(this.state.name, this.state.content, this.state.date)}>
+            <i className="fa fa-plus" />Add Note<i className="fa fa-plus" />
+          </button>
+        </div>
+      </div>
     );
   }
 
@@ -33,16 +35,23 @@ export default class AddNoteInput extends Component {
     this.state = {
       name: this.props.name || '',
       content: this.props.content || '',
-      date: new Date().toLocaleString().slice(0,10) || ''
+      date: this.currentDate() || ''
     };
   }
 
-  addNote(name, content) {
+  currentDate() {
+    let date = new Date();
+    let hours = date.getHours() < 10 ? '0' + date.getHours() : date.getHours();
+    let minutes = date.getMinutes() < 10 ? '0' + date.getMinutes() : date.getMinutes();
+    return date.toLocaleString().slice(0,10) + ' ' + hours + ':' + minutes;
+  }
+
+  addNote(name, content, date) {
     if (name === '' || content === '') {
       return alert('Fill the fields and try again');
     } else {
-      this.props.addNote(name, content);
-      this.setState({ name: '', content: '' });
+      this.props.addNote(name, content, date);
+      this.setState({ name: '', content: '', date: '' });
     }
   }
 

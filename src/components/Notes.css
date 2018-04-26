@@ -1,3 +1,5 @@
-
+.notes {
+  display: flex;
+  flex-flow: row wrap; }
 
 /*# sourceMappingURL=Notes.css.map */

@@ -22,7 +22,7 @@ export default class AddNoteInput extends Component {
           onChange={this.textAreaHandleChange.bind(this)}
         />
         <div className={styles.formControl}>
-          <button className={`btn btn-add ${styles.btnAction}`} onClick={() => this.addNote(this.state.name, this.state.content, this.state.date)}>
+          <button className={`btn btn-add ${styles.btnAction}`} onClick={() => this.addNote(this.state.name, this.state.content, this.currentDate())}>
             <i className="fa fa-plus" />Add Note<i className="fa fa-plus" />
           </button>
         </div>
@@ -34,8 +34,7 @@ export default class AddNoteInput extends Component {
     super(props, context);
     this.state = {
       name: this.props.name || '',
-      content: this.props.content || '',
-      date: this.currentDate() || ''
+      content: this.props.content || ''
     };
   }
 

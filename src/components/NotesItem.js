@@ -4,6 +4,10 @@ import styles from './NotesItem.css';
 
 export default class NotesItem extends Component {
   render () {
+    this.state.name = this.props.name;
+    this.state.content = this.props.content;
+    this.state.date = this.props.date;
+    
     return (
       <li className={`${styles.notesItem} note-${this.props.id}`}>
         <input 
@@ -12,9 +16,9 @@ export default class NotesItem extends Component {
           onChange={this.inputHandleChange.bind(this)}
         />
         <textarea 
-          onChange={this.textAreaHandleChange.bind(this)}>
-          {this.state.content}
-        </textarea>
+          value={this.state.content}
+          onChange={this.textAreaHandleChange.bind(this)}
+        />
         <div className={styles.itemControls}>
           <span className={styles.itemDate}>Date: {this.state.date}</span>
           <button className={`btn btn-edit ${styles.btnAction}`} onClick={() => this.editNote(this.props.id, this.state.name, this.state.content, this.state.date)}>
@@ -55,11 +59,11 @@ export default class NotesItem extends Component {
   }
 
   inputHandleChange(e) {
-    this.setState({ name: e.target.value, content: document.querySelector('.note-' + this.props.id + ' textarea').value });
+    this.setState({ name: e.target.value });
   }
 
   textAreaHandleChange(e) {
-    this.setState({ content: e.target.value, name: document.querySelector('.note-' + this.props.id + ' input').value });
+    this.setState({ content: e.target.value });
   }
 }
 

@@ -1,0 +1,44 @@
+* {
+  margin: 0;
+  padding: 0;
+  outline: none;
+  border: none;
+  font-family: 'Lobster', cursive;
+  font-weight: 400;
+  color: #000000;
+}
+
+body {
+  background: #36d668;
+}
+
+input, textarea {
+  transition: linear 0.5s;
+  height: 26px;
+  border-radius: 12px;
+  text-align: center;
+  margin-top: 10px;
+  padding: 0 14px;
+  background: #baffc6;
+  font-size: 16px;
+}
+
+input:hover, textarea:hover, input:focus, textarea:focus {
+  transition: linear 0.5s;
+  background: #ffffff;
+}
+
+textarea {
+  resize: none;
+  height: 160px;
+  padding-top: 3px;
+}
+
+button {
+  background: transparent;
+}
+
+.main {
+  margin: 0 auto;
+  width: 1200px;
+}

@@ -1,0 +1,33 @@
+.notesItem {
+  display: flex;
+  flex-direction: column;
+  padding: 10px;
+  margin: 0 5px;
+  .itemControls {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-top: 10px;
+    .itemDate {
+      font-size: 18px;
+    }
+    .btnAction {
+      transition: linear 0.5s;
+      i {
+        transition: linear 0.5s;
+        font-size: 20px;
+      }
+      .removeIcon {
+        position: relative;
+        bottom: 2px;
+      }
+    }
+    .btnAction:hover {
+      transition: linear 0.5s;
+      i {
+        transition: linear 0.5s;
+        color: #ffffff;
+      }
+    }
+  }
+}

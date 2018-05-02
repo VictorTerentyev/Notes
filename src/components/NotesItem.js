@@ -8,14 +8,12 @@ export default class NotesItem extends Component {
       <li className={`${styles.notesItem} note-${this.props.id}`}>
         <input 
           type="text" 
-          value={this.props.name} 
+          value={this.state.name} 
           onChange={this.inputHandleChange.bind(this)}
-          onClick={this.inputClick.bind(this)}
         />
         <textarea 
-          value={this.props.content}
+          value={this.state.content}
           onChange={this.textAreaHandleChange.bind(this)}
-          onClick={this.textAreaClick.bind(this)}
         />
         <div className={styles.itemControls}>
           <span className={styles.itemDate}>Date: {this.state.date}</span>
@@ -48,7 +46,13 @@ export default class NotesItem extends Component {
   }
 
   removeNote(id) {
+    console.log(this);
     this.props.removeNote(id);
+    this.setState({ 
+      name: this.props.notes[id].name,
+      content: this.props.notes[id].content,
+      date: this.props.notes[id].date
+    });
   }
 
   editNote(id, name, content, date) {
@@ -67,27 +71,6 @@ export default class NotesItem extends Component {
   textAreaHandleChange(e) {
     this.setState({ content: e.target.value });
   }
-
-  modifyValue(e) {
-
-  }
-
-  inputClick(e) {
-    e.target.outerHTML = '<input type="text" value="' + this.state.name + '"/>';
-    e.target.addEventListener('change', function() {
-      this.setState({ name: e.target.value });
-    }, false);
-    e.target.click();
-  }
-
-  textAreaClick(e) {
-    e.target.outerHTML = '<textarea value="' + this.state.content + '"/>';
-    e.target.addEventListener('change', function() {
-      this.setState({ content: e.target.value });
-    }, false);
-    e.target.click();
-  }
-
 }
 
 NotesItem.propTypes = {

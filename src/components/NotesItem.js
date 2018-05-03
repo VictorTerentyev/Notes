@@ -9,18 +9,18 @@ export default class NotesItem extends Component {
         <input 
           type="text" 
           value={this.state.name} 
-          onChange={this.inputHandleChange.bind(this)}
+          onChange={this.inputHandleChange}
         />
         <textarea 
           value={this.state.content}
-          onChange={this.textAreaHandleChange.bind(this)}
+          onChange={this.textAreaHandleChange}
         />
         <div className={styles.itemControls}>
-          <span className={styles.itemDate}>Date: {this.state.date}</span>
-          <button className={`btn btn-edit ${styles.btnAction}`} onClick={() => this.editNote(this.props.id, this.state.name, this.state.content, this.state.date)}>
+          <span className={styles.itemDate}>Date: {this.props.date}</span>
+          <button className={`btn btn-edit ${styles.btnAction}`} onClick={this.editHandleNote}>
             <i className="fa fa-edit"/>
           </button>
-          <button className={`btn btn-remove ${styles.btnAction}`} onClick={() => this.removeNote(this.props.id)}>
+          <button className={`btn btn-remove ${styles.btnAction}`} onClick={this.removeHandleNote}>
             <i className={`fa fa-trash ${styles.removeIcon}`}/>
           </button>
         </div>
@@ -28,47 +28,43 @@ export default class NotesItem extends Component {
     );
   }
 
-  constructor (props, context) {
-    super(props, context);
-    this.state = {
-      id: this.props.id || '',
-      name: this.props.name || '',
-      content: this.props.content || '',
-      date: this.currentDate() || ''
-    };
-  }
-
-  currentDate() {
-    let date = new Date();
-    let hours = date.getHours() < 10 ? '0' + date.getHours() : date.getHours();
-    let minutes = date.getMinutes() < 10 ? '0' + date.getMinutes() : date.getMinutes();
-    return date.toLocaleString().slice(0,10) + ' ' + hours + ':' + minutes;
-  }
-
-  removeNote(id) {
-    console.log(this);
-    this.props.removeNote(id);
-    this.setState({ 
-      name: this.props.notes[id].name,
-      content: this.props.notes[id].content,
-      date: this.props.notes[id].date
-    });
-  }
-
-  editNote(id, name, content, date) {
-    if (name === '' || content === '') {
-      return alert('Fill the fields and try again');
-    } else {
-      document.querySelector('.note-' + this.props.id + ' span').innerHTML = 'Date: ' + this.currentDate();
-      this.props.editNote(id, name, content, this.currentDate());
+  static getDerivedStateFromProps(nextProps, prevState) {
+    return {
+      ...prevState,
+      name: nextProps.name || '',
+      content: nextProps.content || ''
     }
   }
 
-  inputHandleChange(e) {
+  removeHandleNote = (e) => {
+    this.props.removeNote(this.props.id);
+  }
+
+  editHandleNote = (e) => {
+    if (this.state.name === '' || this.state.content === '') {
+      return alert('Fill the fields and try again');
+    } else {
+      const date = new Date();
+      this.props.editNote(
+        this.props.id, 
+        this.state.name, 
+        this.state.content, 
+        date.toLocaleString('ru-RU',{
+          day: '2-digit',
+          month: '2-digit',
+          year: 'numeric',
+          hour: '2-digit',
+          minute: '2-digit'
+        })
+      );
+    }
+  }
+
+  inputHandleChange = (e) => {
     this.setState({ name: e.target.value });
   }
 
-  textAreaHandleChange(e) {
+  textAreaHandleChange = (e) => {
     this.setState({ content: e.target.value });
   }
 }

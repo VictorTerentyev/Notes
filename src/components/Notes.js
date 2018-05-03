@@ -9,16 +9,15 @@ export default class Notes extends Component {
   render () {
     return (
       <ul className={styles.notes}>
-        {Object.entries(this.props.notes).map(e => {
+        {Object.values(this.props.notes).map(e => {
           return (
             <NotesItem
-            key={e[e.length-1].id}
-            id={e[e.length-1].id}
-            name={e[e.length-1].name}
-            content={e[e.length-1].content}
-            date={e[e.length-1].date}
+            key={e.id}
+            id={e.id}
+            name={e.name}
+            content={e.content}
+            date={e.date}
             {...this.props.actions}
-            {...this.props}
             /> 
           );
         })}

@@ -12,17 +12,17 @@ export default class AddNoteInput extends Component {
           className={classnames('input-form-control', styles.addNoteInput)}
           placeholder="Type the name of a note"
           value={this.state.name}
-          onChange={this.inputHandleChange.bind(this)}
+          onChange={this.inputHandleChange}
         />
         <textarea
           type="text"
           className={classnames('textarea-form-control', styles.addNoteTextArea)}
           placeholder="Type content of a note"
           value={this.state.content}
-          onChange={this.textAreaHandleChange.bind(this)}
+          onChange={this.textAreaHandleChange}
         />
         <div className={styles.formControl}>
-          <button className={`btn btn-add ${styles.btnAction}`} onClick={() => this.addNote(this.state.name, this.state.content, this.currentDate())}>
+          <button className={`btn btn-add ${styles.btnAction}`} onClick={this.addHandleNote}>
             <i className="fa fa-plus" />Add Note<i className="fa fa-plus" />
           </button>
         </div>
@@ -38,27 +38,31 @@ export default class AddNoteInput extends Component {
     };
   }
 
-  currentDate() {
-    let date = new Date();
-    let hours = date.getHours() < 10 ? '0' + date.getHours() : date.getHours();
-    let minutes = date.getMinutes() < 10 ? '0' + date.getMinutes() : date.getMinutes();
-    return date.toLocaleString().slice(0,10) + ' ' + hours + ':' + minutes;
-  }
-
-  addNote(name, content, date) {
-    if (name === '' || content === '') {
+  addHandleNote = (e) => {
+    if (this.state.name === '' || this.state.content === '') {
       return alert('Fill the fields and try again');
     } else {
-      this.props.addNote(name, content, date);
-      this.setState({ name: '', content: '', date: '' });
+      const date = new Date();
+      this.props.addNote(
+        this.state.name, 
+        this.state.content, 
+        date.toLocaleString('ru-RU',{
+          day: '2-digit',
+          month: '2-digit',
+          year: 'numeric',
+          hour: '2-digit',
+          minute: '2-digit'
+        })
+      );
+      this.setState({ name: '', content: ''});
     }
   }
 
-  inputHandleChange (e) {
+  inputHandleChange = (e) => {
     this.setState({ name: e.target.value });
   }
 
-  textAreaHandleChange (e) {
+  textAreaHandleChange = (e) => {
     this.setState({ content: e.target.value });
   }
 }

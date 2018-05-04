@@ -1,16 +1,16 @@
 import React, { Component } from 'react';
-import { combineReducers } from 'redux';
+import { combineReducers, createStore, applyMiddleware } from 'redux';
+import thunk from 'redux-thunk';
 import { Provider } from 'react-redux';
 
 import NotesApp from './NotesApp';
 
-import { createStore, renderDevTools } from '../tools/devTools';
 import * as reducers from '../reducers';
 
 import styles from './App.css';
 
 const reducer = combineReducers(reducers);
-const store = createStore(reducer);
+const store = createStore(reducer, applyMiddleware(thunk));
 
 export default class App extends Component {
   render() {

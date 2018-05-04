@@ -44,12 +44,11 @@ export default class NotesItem extends Component {
     if (this.state.name === '' || this.state.content === '') {
       return alert('Fill the fields and try again');
     } else {
-      const date = new Date();
       this.props.editNote(
         this.props.id, 
         this.state.name, 
         this.state.content, 
-        date.toLocaleString('ru-RU',{
+        (new Date()).toLocaleString('ru-RU',{
           day: '2-digit',
           month: '2-digit',
           year: 'numeric',

@@ -1,11 +1,10 @@
 import * as types from '../constants/ActionTypes';
 
 const initialState = {
-  id: 0,
+  id: (new Date()).getTime(),
   name: 'default',
   content: 'default',
   date: 'default',
-  notes: [],
   notesById: {}
 }
 
@@ -28,38 +27,16 @@ export default function notes(state = initialState, action) {
       })
 
     case types.REMOVE_NOTE:
-    
-      function removeFromNotes(element, id) {
-        element.splice(id, 1);
-        for (let i = id; i < element.length; i++) {
-          element[i]--;
-        }
-        return element;
-      }
-
-      function removeFromNotesById(element, id) {
-        delete element[id];
-        for (let key in element) {
-          if (key > id) {
-            element[key].id--;
-            element[key-1] = element[key];
-            delete element[key];
-          }
-        }
-        return element
-      }
-
+      delete state.notesById[action.id];
       return ({
         ...state,
-        notes: removeFromNotes(state.notes, action.id),
-        notesById: removeFromNotesById(state.notesById, action.id)
+        notesById: state.notesById
       })
 
     case types.ADD_NOTE:
-      const newId = state.notes.length;
+      const newId = (new Date()).getTime();
       return ({
         ...state,
-        notes: state.notes.concat(newId),
         notesById: {
           ...state.notesById,
           [newId]: {

@@ -17,7 +17,7 @@ export default class App extends Component {
     return (
       <div className={styles.main}>
         <Provider store={store}>
-          <NotesApp />
+          <NotesApp/>
         </Provider>
       </div>
     );

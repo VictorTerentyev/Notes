@@ -1,11 +1,13 @@
 import * as types from '../constants/ActionTypes';
 
+let localState = {}
+
+if (localStorage.notesAppState) {
+  localState = JSON.parse(localStorage.notesAppState).notes.notesById; 
+}
+
 const initialState = {
-  id: (new Date()).getTime(),
-  name: 'default',
-  content: 'default',
-  date: 'default',
-  notesById: {}
+  notesById: localState
 }
 
 export default function notes(state = initialState, action) {

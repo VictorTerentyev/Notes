@@ -1,7 +1,8 @@
 .formControl {
   display: flex;
   flex-direction: column;
-  padding: 10px; }
+  padding: 10px;
+  margin: 0px 5px; }
   .formControl .btnAction {
     transition: linear 0.5s;
     font-size: 18px;
@@ -14,5 +15,9 @@
   .formControl .btnAction:hover {
     transition: linear 0.5s;
     background: #ffffff; }
+
+@media (max-width: 768px) {
+  .notes {
+    flex-direction: column; } }
 
 /*# sourceMappingURL=AddNoteInput.css.map */

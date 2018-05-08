@@ -24,4 +24,12 @@
         transition: linear 0.5s;
         color: #ffffff; }
 
+@media (max-width: 768px) {
+  .notesItem {
+    padding: 0px; }
+    .notesItem .itemControls {
+      justify-content: center; }
+      .notesItem .itemControls i {
+        margin-left: 10px; } }
+
 /*# sourceMappingURL=NotesItem.css.map */

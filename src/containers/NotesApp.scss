@@ -8,7 +8,6 @@
     margin: 10px 0;
   }
   hr {
-    width: 1196px;
     border: 2px solid #000000;
     border-radius: 2px;
     margin-bottom: 10px;
@@ -16,5 +15,13 @@
   .appBody {
     display: flex;
     flex-direction: row;
+  }
+}
+
+@media (max-width: 768px) {
+  .notesApp {
+    .appBody {
+      flex-direction: column;
+    }
   }
 }

@@ -2,3 +2,13 @@
   display: flex;
   flex-flow: row wrap;
 }
+
+@media (max-width: 768px) {
+  .notes {
+    padding: 0 10px;
+    flex-flow: column;
+    .btn-add {
+      margin-top: 10px;
+    }
+  }
+}

@@ -31,3 +31,15 @@
     }
   }
 }
+
+@media (max-width: 768px) {
+  .notesItem {
+    padding: 0px;
+    .itemControls {
+      justify-content: center;
+      i {
+        margin-left: 10px;
+      }
+    }
+  }
+}
